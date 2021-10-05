@@ -1,7 +1,13 @@
-import React, { useState } from "react";
+import React, {
+  useState,
+  // useEffect
+} from "react";
 import "./App.css";
 
+// import { getAllSubmissions } from "./services/submissions";
+
 function App() {
+  // const [submissions, setSubmissions] = useState([]);
   const [data, setData] = useState({
     name: "",
     email: "",
@@ -34,6 +40,15 @@ function App() {
       console.log("ERROR: ", error);
     }
   };
+
+  // useEffect(() => {
+  //   const fetchSubmissions = async () => {
+  //     const submissionArray = await getAllSubmissions();
+  //     setSubmissions(submissionArray);
+  //   };
+  //   fetchSubmissions();
+  // }, []);
+
   return (
     <div className="App">
       <form className="form__container" onSubmit={handleSubmit}>
@@ -67,8 +82,50 @@ function App() {
           Submit
         </button>
       </form>
+      <div style={{ position: "relative", top: "100px" }}>
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://docs.google.com/spreadsheets/d/10BN33OopwZOWvsclMj44xy6b7Tx8r1GIjFAdQVKfzy8/edit?usp=sharing"
+        >
+          <h3>View results on spreadsheet HERE</h3>
+        </a>
+      </div>
     </div>
   );
 }
 
 export default App;
+
+//If you want to add GET (it uses your API Request Quota)
+
+// <div className="submission-list">
+// <h1>Submissions</h1>
+// {submissions.length && (
+//   <>
+//     {submissions.map((submission) => (
+//       <div
+//         key={`${submission.Name} + div`}
+//         className="single-submission"
+//       >
+//         <p key={`${submission.Name} + p1`}>
+//           <span style={{ fontWeight: "800" }}>Name:</span>{" "}
+//           {submission.Name}
+//         </p>
+//         <p key={`${submission.Name} + p2`}>
+//           <span style={{ fontWeight: "800" }}>Email:</span>{" "}
+//           {submission.Email}
+//         </p>
+//         <p key={`${submission.Name} + p3`}>
+//           <span style={{ fontWeight: "800" }}>Message:</span>{" "}
+//           {submission.Message}
+//         </p>
+//         <p key={`${submission.Name} + p4`}>
+//           <span style={{ fontWeight: "800" }}>Received </span>
+//           {submission.Timestamp}
+//         </p>
+//       </div>
+//     ))}
+//   </>
+// )}
+// </div>
